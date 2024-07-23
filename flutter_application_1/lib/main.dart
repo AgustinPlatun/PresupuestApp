@@ -29,14 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,21 +40,64 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Presionaste el boton esta cantidad de veces:',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                SizedBox(
+                  width: 170.0,
+                  height: 170.0,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Acción para el primer botón
+                    },
+                    tooltip: 'Botón 1',
+                    child: const Icon(Icons.add, size: 60),
+                  ),
+                ),
+                SizedBox(
+                  width: 170.0,
+                  height: 170.0,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Acción para el segundo botón
+                    },
+                    tooltip: 'Botón 2',
+                    child: const Icon(Icons.add, size: 60),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            SizedBox(height: 40), // Espaciado reducido entre filas
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                SizedBox(
+                  width: 170.0,
+                  height: 170.0,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Acción para el tercer botón
+                    },
+                    tooltip: 'Botón 3',
+                    child: const Icon(Icons.add, size: 60),
+                  ),
+                ),
+                SizedBox(
+                  width: 170.0,
+                  height: 170.0,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Acción para el cuarto botón
+                    },
+                    tooltip: 'Botón 4',
+                    child: const Icon(Icons.add, size: 60),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
