@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class likedproducts extends StatelessWidget {
-  const likedproducts({Key? key}) : super(key: key);
+class Stats extends StatelessWidget {
+  const Stats({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class likedproducts extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Liked Products',
+            'Estadisticas',
             style: TextStyle(fontSize: 28),
           ),
         ),
@@ -17,8 +17,8 @@ class likedproducts extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Lista de likeados',
-          style: TextStyle(fontSize: 28),
+          'Estadisticas',
+          style: TextStyle(fontSize: 26),
         ),
       ),
     );
