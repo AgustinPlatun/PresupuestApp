@@ -77,6 +77,7 @@ class _PostAddState extends State<PostAdd> {
     }
   }
 
+  // ignore: unused_element
   void _agregarProducto() {
     if (_productoActivo != null && _productoActivo!.ingredientes.length > 1) {
       setState(() {
@@ -213,7 +214,7 @@ class _PostAddState extends State<PostAdd> {
                         ),
                       ),
                       TextSpan(
-                        text: ': \$${(_productoActivo!.calcularPrecioTotal() * 1.405).toStringAsFixed(2)}',
+                        text: ': \$${(_productoActivo!.calcularPrecioTotal() * 1.45).toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.normal,
