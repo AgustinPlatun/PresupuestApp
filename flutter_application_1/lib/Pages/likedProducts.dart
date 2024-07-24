@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/home.dart'; // Asegúrate de importar la página de inicio
 
+// ignore: camel_case_types
 class likedproducts extends StatelessWidget {
   const likedproducts({Key? key}) : super(key: key);
 

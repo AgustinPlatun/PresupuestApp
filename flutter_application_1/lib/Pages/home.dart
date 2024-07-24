@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/history.dart';
 import 'package:flutter_application_1/Pages/likedProducts.dart';
-import 'package:flutter_application_1/Pages/postadd.dart';
+import 'package:flutter_application_1/Pages/postAdd.dart';
 import 'package:flutter_application_1/Pages/stats.dart';
 
 class PageHome extends StatelessWidget {
@@ -13,12 +13,13 @@ class PageHome extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
+        title: const Center(
           child: Text(
             'PresupuestApp',
-            style: TextStyle(fontSize: 28), // Ajusta el tamaño del texto si lo deseas
+            style: TextStyle(fontSize: 28),
           ),
         ),
-        backgroundColor: Colors.blue, // Cambia el color si lo deseas
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Column(
@@ -37,16 +38,28 @@ class PageHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => PostAdd()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0), // Ajusta el radio de los bordes
+                      ),
+                      backgroundColor: Colors.blue,
+                      
+                    ),
                     child: const Text(
                       'Agregar producto',
                       style: TextStyle(fontSize: 22, color: Colors.white),
+                      style: TextStyle(color: Colors.black,fontSize: 20),
                       textAlign: TextAlign.center,
+                      
                     ),
                   ),
                 ),
@@ -60,22 +73,31 @@ class PageHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => History()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
                     child: const Text(
                       'Historial',
                       style: TextStyle(fontSize: 22, color: Colors.white),
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20), // Espacio entre la primera y segunda fila
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -89,15 +111,25 @@ class PageHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => likedproducts()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        
+                      ),
+                    ),
                     child: const Text(
                       'Favoritos',
                       style: TextStyle(fontSize: 22, color: Colors.white),
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -112,22 +144,32 @@ class PageHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Stats()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
                     child: const Text(
                       'Estadísticas',
                       style: TextStyle(fontSize: 22, color: Colors.white),
+                      'Estadísticas',
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 40), // Espacio al final
+            const SizedBox(height: 40),
           ],
         ),
       ),
