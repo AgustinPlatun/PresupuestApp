@@ -11,13 +11,13 @@ class PageHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Text(
             'PresupuestApp',
-            style: TextStyle(fontSize: 28), // Ajusta el tamaño del texto si lo deseas
+            style: TextStyle(fontSize: 28),
           ),
         ),
-        backgroundColor: Colors.blue, // Cambia el color si lo deseas
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Column(
@@ -27,82 +27,106 @@ class PageHome extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 SizedBox(
-                  width: 170.0,
-                  height: 170.0,
-                  child: FloatingActionButton(
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => PostAdd()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0), // Ajusta el radio de los bordes
+                      ),
+                      backgroundColor: Colors.blue,
+                      
+                    ),
                     child: const Text(
                       'Agregar producto',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(color: Colors.black,fontSize: 20),
                       textAlign: TextAlign.center,
+                      
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 170.0,
-                  height: 170.0,
-                  child: FloatingActionButton(
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => History()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
                     child: const Text(
                       'Historial',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20), // Espacio entre la primera y segunda fila
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 SizedBox(
-                  width: 170.0,
-                  height: 170.0,
-                  child: FloatingActionButton(
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => likedproducts()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        
+                      ),
+                    ),
                     child: const Text(
                       'Favoritos',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 170.0,
-                  height: 170.0,
-                  child: FloatingActionButton(
+                  width: 190.0,
+                  height: 190.0,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Stats()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
                     child: const Text(
-                      'Estadisticas',
-                      style: TextStyle(fontSize: 26),
+                      'Estadísticas',
+                      style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 40), // Espacio al final
+            const SizedBox(height: 40),
           ],
         ),
       ),
