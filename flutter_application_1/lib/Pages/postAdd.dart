@@ -115,6 +115,7 @@ class _PostAddState extends State<PostAdd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             'Agregar producto',
