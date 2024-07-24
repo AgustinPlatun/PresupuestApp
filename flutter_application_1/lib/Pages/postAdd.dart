@@ -1,23 +1,19 @@
-// ignore: file_names
-// ignore: file_names
-// ignore: file_names
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Models/ingredients.dart';
 import 'package:flutter_application_1/Models/producto.dart';
+import 'package:flutter_application_1/Models/historial.dart';
 
 class PostAdd extends StatefulWidget {
   const PostAdd({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _PostAddState createState() => _PostAddState();
 }
 
 class _PostAddState extends State<PostAdd> {
   final _nombreProductoController = TextEditingController();
   final _productoList = <Producto>[]; // Lista de productos
-  final _historial = <Producto>[]; // Lista de historial
+  final Historial _historial = Historial(); // Instancia de Historial
   Producto? _productoActivo; // Producto actualmente seleccionado
   final _nombreController = TextEditingController();
   final _precioController = TextEditingController();
@@ -46,7 +42,8 @@ class _PostAddState extends State<PostAdd> {
 
       if (nombreIngrediente.isNotEmpty && precio > 0 && cantidad > 0) {
         setState(() {
-          final ingrediente = Ingrediente(nombre: nombreIngrediente, precio: precio, cantidad: cantidad);
+          final ingrediente = Ingrediente(
+              nombre: nombreIngrediente, precio: precio, cantidad: cantidad);
           _productoActivo!.ingredientes.add(ingrediente);
 
           // Limpiar campos después de agregar ingrediente
@@ -77,10 +74,11 @@ class _PostAddState extends State<PostAdd> {
     }
   }
 
-  void _agregarProducto() {
+  void _agregarProductoHistorial() {
     if (_productoActivo != null && _productoActivo!.ingredientes.length > 1) {
       setState(() {
-        _historial.add(_productoActivo!);
+        _historial.agregar(_productoActivo!);
+        print('Producto agregado: ${_productoActivo!.nombreProducto}');
         _productoActivo = null;
         // Limpiar campos después de agregar producto
         _nombreProductoController.clear();
@@ -90,6 +88,8 @@ class _PostAddState extends State<PostAdd> {
       });
     } else {
       _reiniciar();
+      print(
+          'Reiniciar porque _productoActivo es null o no tiene suficientes ingredientes');
     }
   }
 
@@ -103,6 +103,14 @@ class _PostAddState extends State<PostAdd> {
     });
   }
 
+  void _borrarProducto(){
+    if (_productoActivo != null) {
+      setState(() {
+        _reiniciar();
+        _historial.get_historial.remove(_productoActivo);
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +162,7 @@ class _PostAddState extends State<PostAdd> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     FloatingActionButton(
-                      onPressed: _reiniciar,
+                      onPressed: _borrarProducto,
                       backgroundColor: Colors.red,
                       child: Icon(Icons.delete),
                     ),
@@ -175,11 +183,13 @@ class _PostAddState extends State<PostAdd> {
                         final ingrediente = _productoActivo!.ingredientes[index];
                         return ListTile(
                           title: Text(ingrediente.nombre),
-                          subtitle: Text('\$${ingrediente.precio.toStringAsFixed(2)} x${ingrediente.cantidad}'),
+                          subtitle: Text(
+                              '\$${ingrediente.precio.toStringAsFixed(2)} x${ingrediente.cantidad}'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('\$${ingrediente.calcularPrecioTotal().toStringAsFixed(2)}'),
+                              Text(
+                                  '\$${ingrediente.calcularPrecioTotal().toStringAsFixed(2)}'),
                               IconButton(
                                 icon: Icon(Icons.delete, color: Colors.red),
                                 onPressed: () => _eliminarIngrediente(index),
@@ -213,7 +223,8 @@ class _PostAddState extends State<PostAdd> {
                         ),
                       ),
                       TextSpan(
-                        text: ': \$${(_productoActivo!.calcularPrecioTotal() * 1.405).toStringAsFixed(2)}',
+                        text:
+                            ': \$${(_productoActivo!.calcularPrecioTotal() * 1.405).toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.normal,
@@ -222,6 +233,10 @@ class _PostAddState extends State<PostAdd> {
                       ),
                     ],
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: _agregarProductoHistorial,
+                  child: Text('Agregar al historial'),
                 ),
               ],
             ],

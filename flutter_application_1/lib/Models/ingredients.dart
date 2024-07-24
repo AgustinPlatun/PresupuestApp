@@ -14,7 +14,10 @@ class Ingrediente {
     return precio * cantidad;
   }
 
-  
+  @override
+  String toString() {
+    return 'Ingrediente(nombre: $nombre, precio: $precio, cantidad: $cantidad)';
+  }
 }
 
 
