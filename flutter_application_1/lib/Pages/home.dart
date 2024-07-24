@@ -11,6 +11,7 @@ class PageHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             'PresupuestApp',
@@ -29,7 +30,13 @@ class PageHome extends StatelessWidget {
                 SizedBox(
                   width: 170.0,
                   height: 170.0,
-                  child: FloatingActionButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -38,7 +45,7 @@ class PageHome extends StatelessWidget {
                     },
                     child: const Text(
                       'Agregar producto',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -46,7 +53,13 @@ class PageHome extends StatelessWidget {
                 SizedBox(
                   width: 170.0,
                   height: 170.0,
-                  child: FloatingActionButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -55,7 +68,7 @@ class PageHome extends StatelessWidget {
                     },
                     child: const Text(
                       'Historial',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -69,7 +82,13 @@ class PageHome extends StatelessWidget {
                 SizedBox(
                   width: 170.0,
                   height: 170.0,
-                  child: FloatingActionButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -78,7 +97,7 @@ class PageHome extends StatelessWidget {
                     },
                     child: const Text(
                       'Favoritos',
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -86,7 +105,13 @@ class PageHome extends StatelessWidget {
                 SizedBox(
                   width: 170.0,
                   height: 170.0,
-                  child: FloatingActionButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -94,8 +119,8 @@ class PageHome extends StatelessWidget {
                       );
                     },
                     child: const Text(
-                      'Estadisticas',
-                      style: TextStyle(fontSize: 26),
+                      'Estadísticas',
+                      style: TextStyle(fontSize: 22, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
