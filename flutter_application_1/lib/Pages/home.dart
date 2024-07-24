@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/history.dart';
 import 'package:flutter_application_1/Pages/likedProducts.dart';
-import 'package:flutter_application_1/Pages/postadd.dart';
+import 'package:flutter_application_1/Pages/postAdd.dart';
 import 'package:flutter_application_1/Pages/stats.dart';
 
 class PageHome extends StatelessWidget {

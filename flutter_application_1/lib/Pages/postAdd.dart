@@ -1,4 +1,7 @@
 // ignore: file_names
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Models/ingredients.dart';
 import 'package:flutter_application_1/Models/producto.dart';
@@ -7,6 +10,7 @@ class PostAdd extends StatefulWidget {
   const PostAdd({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PostAddState createState() => _PostAddState();
 }
 
@@ -151,13 +155,13 @@ class _PostAddState extends State<PostAdd> {
                   children: [
                     FloatingActionButton(
                       onPressed: _reiniciar,
-                      child: Icon(Icons.delete),
                       backgroundColor: Colors.red,
+                      child: Icon(Icons.delete),
                     ),
                     FloatingActionButton(
                       onPressed: _agregarIngrediente,
-                      child: Icon(Icons.add),
                       backgroundColor: Colors.blue,
+                      child: Icon(Icons.add),
                     ),
                   ],
                 ),

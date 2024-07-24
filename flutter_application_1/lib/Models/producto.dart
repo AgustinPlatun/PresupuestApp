@@ -8,6 +8,7 @@ class Producto {
 
   Producto(this._nombreProducto);
 
+  // ignore: unnecessary_getters_setters
   String get nombreProducto => _nombreProducto;
 
   set nombreProducto(String value) {

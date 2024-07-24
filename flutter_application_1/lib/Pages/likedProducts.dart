@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class likedproducts extends StatelessWidget {
   const likedproducts({Key? key}) : super(key: key);
 
