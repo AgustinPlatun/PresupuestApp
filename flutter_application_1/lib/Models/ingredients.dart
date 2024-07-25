@@ -9,11 +9,13 @@ class Ingrediente {
   double precio;
   int cantidad;
   UnidadMedida? unidad;
+  int cantusada;
 
   Ingrediente({
     required this.nombre,
     required this.precio,
     required this.cantidad,
+    required this.cantusada,
     this.unidad,
   });
 
@@ -22,12 +24,16 @@ class Ingrediente {
   }
 
   double calcularPrecioSegunUnidad() {
+    double resultado=0;
     switch (unidad) {
       case UnidadMedida.mililitros:
+        resultado = ( precio / cantidad); 
+        return resultado * cantusada;
       case UnidadMedida.miligramos:
-        return cantidad / precio;
+        resultado = ( precio / cantidad); 
+        return resultado * cantusada;
       case UnidadMedida.cantidad:
-        return cantidad * precio;
+        return cantusada * precio;
       default:
         return 0.0;
     }

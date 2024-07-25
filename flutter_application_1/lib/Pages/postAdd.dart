@@ -7,6 +7,7 @@ class PostAdd extends StatefulWidget {
   const PostAdd({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PostAddState createState() => _PostAddState();
 }
 
@@ -18,6 +19,7 @@ class _PostAddState extends State<PostAdd> {
   final _nombreController = TextEditingController();
   final _precioController = TextEditingController();
   final _cantidadController = TextEditingController();
+  final _cantusadaController = TextEditingController();
   UnidadMedida? _unidadSeleccionada; // Unidad de medida seleccionada
 
   @override
@@ -40,7 +42,7 @@ class _PostAddState extends State<PostAdd> {
       final nombreIngrediente = _nombreController.text;
       final precio = double.tryParse(_precioController.text) ?? 0.0;
       final cantidad = int.tryParse(_cantidadController.text) ?? 1;
-
+      final cantusada = int.tryParse(_cantusadaController.text) ?? 0;
       if (nombreIngrediente.isNotEmpty && precio > 0 && cantidad > 0 && _unidadSeleccionada != null) {
         setState(() {
           final ingrediente = Ingrediente(
@@ -48,6 +50,7 @@ class _PostAddState extends State<PostAdd> {
             precio: precio, 
             cantidad: cantidad,
             unidad: _unidadSeleccionada,
+            cantusada: cantusada,
           );
           _productoActivo!.ingredientes.add(ingrediente);
 
@@ -56,6 +59,7 @@ class _PostAddState extends State<PostAdd> {
           _precioController.clear();
           _cantidadController.clear();
           _unidadSeleccionada = null;
+          _cantidadController.clear();
         });
       }
     }
@@ -91,6 +95,7 @@ class _PostAddState extends State<PostAdd> {
         _nombreController.clear();
         _precioController.clear();
         _cantidadController.clear();
+        _cantusadaController.clear();
       });
     } else {
       _reiniciar();
@@ -105,6 +110,7 @@ class _PostAddState extends State<PostAdd> {
       _nombreController.clear();
       _precioController.clear();
       _cantidadController.clear();
+      _cantusadaController.clear();
       _productoActivo = null;
     });
   }
@@ -162,7 +168,12 @@ class _PostAddState extends State<PostAdd> {
                 TextField(
                   controller: _cantidadController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(labelText: 'Cantidad'),
+                  decoration: InputDecoration(labelText: 'Cantidad total del envase'),
+                ),
+                TextField(
+                  controller: _cantusadaController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: 'Cantidad usada para este producto'),
                 ),
                 SizedBox(height: 16),
                 DropdownButton<UnidadMedida>(
@@ -212,23 +223,23 @@ class _PostAddState extends State<PostAdd> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 ListView.builder(
-  shrinkWrap: true,
-  itemCount: _productoActivo!.ingredientes.length,
-  itemBuilder: (context, index) {
-    final ingrediente = _productoActivo!.ingredientes[index];
-    final precioCalculado = ingrediente.calcularPrecioSegunUnidad();
+                  shrinkWrap: true,
+                  itemCount: _productoActivo!.ingredientes.length,
+                  itemBuilder: (context, index) {
+                    final ingrediente = _productoActivo!.ingredientes[index];
+                    final precioCalculado = ingrediente.calcularPrecioSegunUnidad();
 
-    return ListTile(
-      title: Text(
-        '${ingrediente.nombre} - ${ingrediente.cantidad} ${ingrediente.unidad.toString().split('.').last} - \$${precioCalculado.toStringAsFixed(2)}',
-      ),
-      trailing: IconButton(
-        icon: Icon(Icons.delete),
-        onPressed: () => _eliminarIngrediente(index),
-      ),
-    );
-  },
-),
+                    return ListTile(
+                      title: Text(
+                        '${ingrediente.nombre} - ${ingrediente.cantidad} ${ingrediente.unidad.toString().split('.').last} - \$${precioCalculado.toStringAsFixed(2)}',
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () => _eliminarIngrediente(index),
+                      ),
+                    );
+                  },
+                ),
 
               ],
             ],
