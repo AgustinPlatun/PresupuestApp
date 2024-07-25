@@ -4,7 +4,8 @@ import 'package:flutter_application_1/Models/ingredients.dart'; // Importa el mo
 
 class PostAdd extends StatefulWidget {
   @override
-  _ProductoScreenState createState() => _ProductoScreenState();
+  // ignore: library_private_types_in_public_api
+  _PostAddState createState() => _PostAddState();
 }
 
 class _ProductoScreenState extends State<PostAdd> {
