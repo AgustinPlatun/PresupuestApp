@@ -9,7 +9,7 @@ class Historial {
   List<Producto> get get_historial => _historial;
 
   void agregar(Producto p){
-    get_historial.add(p);
+    this.get_historial.add(p);
     print(p.nombreProducto);
     print(p.ingredientes);
   }

@@ -1,17 +1,40 @@
+enum UnidadMedida {
+  mililitros,
+  miligramos,
+  cantidad
+}
+
 class Ingrediente {
   String nombre;
   double precio;
   int cantidad;
-  String unidad;
+  UnidadMedida? unidad;
 
   Ingrediente({
     required this.nombre,
     required this.precio,
     required this.cantidad,
-    required this.unidad,
+    this.unidad,
   });
 
   double calcularPrecioTotal() {
-    return precio * cantidad;
+    return calcularPrecioSegunUnidad();
+  }
+
+  double calcularPrecioSegunUnidad() {
+    switch (unidad) {
+      case UnidadMedida.mililitros:
+      case UnidadMedida.miligramos:
+        return cantidad / precio;
+      case UnidadMedida.cantidad:
+        return cantidad * precio;
+      default:
+        return 0.0;
+    }
+  }
+
+  @override
+  String toString() {
+    return 'Ingrediente(nombre: $nombre, precio: $precio, cantidad: $cantidad, unidad: $unidad)';
   }
 }
